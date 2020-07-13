@@ -3,12 +3,46 @@ const updateScreen = (number) => {
     calculatorScreen.value = number
 }
 
+const inputNumber = (number) => {
+    if (currentNumber === '0'){
+        currentNumber = number
+    } else {
+        currentNumber += number
+    }
+}
 const numbers = document.querySelectorAll(".number")
-
 numbers.forEach((number)=>{
     number.addEventListener("click", (event)=>{
-        console.log(event.target.value)
+        inputNumber(event.target.value)
+        updateScreen(currentNumber)
+        
     })
  
 })
+
+let prevNumber = ''
+let calculationOperation = ''
+let currentNumber = '0'
+
+const operators = document.querySelectorAll(".operator")
+operators.forEach((operator) => {
+    operator.addEventListener("click", (event) => {
+        inputOperator(event.target.value)
+    })
+})
+
+
+const inputOperator = (operator) => {
+    prevNumber = currentNumber
+    calculationOperator = operator
+    currentNumber =''
+}
+
+
+
+
+
+
+
+
 
