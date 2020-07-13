@@ -1,5 +1,8 @@
 const numbers = document.querySelectorAll(".number")
 
 numbers.forEach((number)=>{
-    console.log(numbers)
+    number.addEventListener("click", ()=>{
+        console.log("number is pressed")
+    })
+ 
 })
