@@ -21,8 +21,9 @@ numbers.forEach((number)=>{
 })
 
 let prevNumber = ''
-let calculationOperation = ''
+let calculationOperator = ''
 let currentNumber = '0'
+
 
 const operators = document.querySelectorAll(".operator")
 operators.forEach((operator) => {
@@ -31,13 +32,54 @@ operators.forEach((operator) => {
     })
 })
 
-
 const inputOperator = (operator) => {
     prevNumber = currentNumber
     calculationOperator = operator
     currentNumber =''
 }
 
+
+const equalSign = document.querySelector('.equal-sign')
+equalSign.addEventListener('click', () => {
+    calculate()
+    updateScreen(currentNumber)
+})
+
+const calculate = () =>{
+    let result = ''
+    switch(calculationOperator){
+        case '+':
+            result = parseInt(prevNumber) + parseInt(currentNumber)
+            break
+        case '-':
+            result = parseInt(prevNumber) - parseInt(currentNumber)
+            break
+        case '*':
+            result = parseInt(prevNumber) * parseInt(currentNumber)
+            break
+        case '/':
+            result = parseInt(prevNumber) / parseInt(currentNumber)
+            break
+        default:
+            return
+        
+
+    }
+    currentNumber = result
+    calculationOperator = ''
+}
+
+const clearBtn = document.querySelector('.all-clear')
+clearBtn.addEventListener('click', () => {
+    clearAll()
+    updateScreen(currentNumber)
+})
+
+const clearAll = () => {
+    prevNumber = ''
+    calculationOperator = ''
+    currentNumber = '0'
+}
 
 
 
